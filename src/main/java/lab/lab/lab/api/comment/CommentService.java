@@ -1,14 +1,14 @@
 package lab.lab.lab.api.comment;
 
-import lab.lab.lab.api.jwt.JwtService;
-import lab.lab.lab.api.user.User;
-import lab.lab.lab.api.user.UserService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lab.lab.lab.api.discipline.Discipline;
 import lab.lab.lab.api.discipline.DisciplineDTO;
 import lab.lab.lab.api.discipline.DisciplineRepository;
 import lab.lab.lab.api.discipline.exception.DisciplineNotFoundException;
+import lab.lab.lab.api.user.UserService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lab.lab.lab.api.jwt.JwtService;
+import lab.lab.lab.api.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

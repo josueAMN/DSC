@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class Lab1Application {
+public class LabsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Lab1Application.class, args);
+		SpringApplication.run(LabsApplication.class, args);
 	}
 
 	@GetMapping("/")
 	@ResponseBody
 	public String index() {
-		return String.format("Welcome to Discipline API");
+		return String.format("Aquela aplicacao");
 	}
 
 }

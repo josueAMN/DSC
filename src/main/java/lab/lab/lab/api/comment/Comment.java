@@ -1,8 +1,8 @@
 package lab.lab.lab.api.comment;
 
-import lab.lab.lab.api.user.User;
-import lombok.*;
 import lab.lab.lab.api.discipline.Discipline;
+import lombok.*;
+import lab.lab.lab.api.user.User;
 
 import javax.persistence.*;
 

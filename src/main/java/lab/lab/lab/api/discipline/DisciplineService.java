@@ -1,13 +1,13 @@
 package lab.lab.lab.api.discipline;
 
-import lab.lab.lab.api.jwt.JwtService;
-import lab.lab.lab.api.user.UserService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lab.lab.lab.api.discipline.exception.DisciplineNotFoundException;
 import lab.lab.lab.api.discipline.exception.InvalidLikesNumberException;
 import lab.lab.lab.api.discipline.exception.InvalidNameException;
 import lab.lab.lab.api.discipline.exception.InvalidNoteException;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lab.lab.lab.api.jwt.JwtService;
+import lab.lab.lab.api.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,9 +38,9 @@ public class DisciplineService {
 
     public DisciplineDTO createNewDiscipline(DisciplineCreateDTO d) {
         if (d.getName() == null || d.getName().length() < 3) {
-            throw new InvalidNameException("Nome da disciplina é nulo ou possui menos de dois caractérs");
+            throw new InvalidNameException("Nome invalido");
         } else if (disciplineRepository.existsByName(d.getName())) {
-            throw new InvalidNameException("Nome da disciplina já existe");
+            throw new InvalidNameException("Nome já cadastrado");
         } else {
             Discipline discipline = Discipline.builder().name(d.getName()).build();
             return DisciplineDTO.convertToDisciplineDTO(disciplineRepository.save(discipline));
@@ -50,7 +50,7 @@ public class DisciplineService {
     public DisciplineDTO getDisciplineByID(Long id) {
         Optional<Discipline> d = disciplineRepository.findById(id);
         if (id < 0 || !d.isPresent()) {
-            throw new DisciplineNotFoundException("Não foi encontrado nenhuma disciplina com o ID " + id.toString());
+            throw new DisciplineNotFoundException("Não foi possivel encontrar a disciplina do ID " + id.toString());
         }
         return DisciplineDTO.convertToDisciplineDTO(d.get());
     }
@@ -63,7 +63,7 @@ public class DisciplineService {
             throw new DisciplineNotFoundException("O ID " + id.toString() + " é inválido");
         }
         if (note == null || note.getNote() < 0) {
-            throw new InvalidNoteException("A nota deve ser maior ou igual a zero.");
+            throw new InvalidNoteException("A maior ou igual a zero.");
         }
         Optional<Discipline> disciplineOptional = this.disciplineRepository.findById(id);
         if (!disciplineOptional.isPresent()) {

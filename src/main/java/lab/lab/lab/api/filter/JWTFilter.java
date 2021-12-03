@@ -26,12 +26,11 @@ public class JWTFilter extends GenericFilterBean {
 
         if (header == null || !header.startsWith("Bearer ")) {
             ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED,
-                    "Token inexistente ou mal formatado!");
+                    "Token inexistente!");
             return;
-            // throw new ServletException("Token inexistente ou mal formatado!");
+
         }
 
-        // Extraindo apenas o token do cabecalho (removendo o prefixo "Bearer ").
         String token = header.substring(TOKEN_INDEX);
         try {
             Jwts.parser().setSigningKey(JwtService.TOKEN_KEY).parseClaimsJws(token).getBody();

@@ -1,8 +1,8 @@
 package lab.lab.lab.api.comment;
 
-import lab.lab.lab.api.user.SimpleUserDTO;
 import lombok.Builder;
 import lombok.Getter;
+import lab.lab.lab.api.user.SimpleUserDTO;
 
 
 import java.io.Serializable;

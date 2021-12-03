@@ -16,12 +16,12 @@ public class JwtService {
 
     @Autowired
     private UserService userService;
-    public static final String TOKEN_KEY = "amanda";
+    public static final String TOKEN_KEY = "josue123";
 
     public LoginResponse autentica(UserDTO usuario) {
 
         if (!userService.validaUsuarioSenha(usuario)) {
-            return new LoginResponse("Usuario ou senha invalidos. Nao foi realizado o login.");
+            return new LoginResponse("Usuario ou senha invalidos.");
         }
 
         String token = geraToken(usuario.getEmail());

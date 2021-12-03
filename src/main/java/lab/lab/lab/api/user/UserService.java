@@ -23,7 +23,7 @@ public class UserService {
     public User getUsuario(String email) {
         Optional<User> optUsuario = userRepository.findByEmail(email);
         if (!optUsuario.isPresent())
-            throw new IllegalArgumentException();// usuario nao existe
+            throw new IllegalArgumentException();
         return optUsuario.get();
     }
 
@@ -33,7 +33,7 @@ public class UserService {
             userRepository.delete(usuario);
             return UserDTO.convertToUserDTO(usuario);
         }
-        throw new ServletException("Usuario nao tem permissao");
+        throw new ServletException("Usuario sem permissao");
     }
 
     public boolean usuarioTemPermissao(String authorizationHeader, String email) throws ServletException {
